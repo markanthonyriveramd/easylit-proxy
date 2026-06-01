@@ -28,8 +28,7 @@ const ALLOWED_HOSTS = [
   'medrxiv.org',
 ];
 
-export default async function handler(req, res) {
-  // CORS
+module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -64,8 +63,8 @@ export default async function handler(req, res) {
     res.setHeader('Cache-Control', 'public, max-age=3600');
 
     const buffer = await response.arrayBuffer();
-    res.status(200).send(Buffer.from(buffer));
+    return res.status(200).send(Buffer.from(buffer));
   } catch(e) {
-    res.status(500).send('Fetch error: ' + e.message);
+    return res.status(500).send('Fetch error: ' + e.message);
   }
-}
+};
