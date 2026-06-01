@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/proxy-pdf", "destination": "/api/proxy-pdf" }
+  ]
+}
